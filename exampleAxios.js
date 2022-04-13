@@ -1,4 +1,3 @@
-export default
 // тк axios подключен в файле html то у нас есть простой доступ
 axios.get('https://jsonplaceholder.typicode.com/posts').then(response=> console.log(response.data))
 

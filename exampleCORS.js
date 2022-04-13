@@ -1,4 +1,3 @@
-
 function getWithFetchCORS() {
     fetch('https://jsonplaceholder.typicode.com/posts',{
         mode: 'same-origin', //CORS - имеет несколько вариантов(no-cors, *cors, same-origin)

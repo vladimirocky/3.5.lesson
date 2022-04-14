@@ -1,3 +1,4 @@
+
 const postsURL = 'https://jsonplaceholder.typicode.com/posts';
 
 // тк axios подключен в файле html то у нас есть простой доступ

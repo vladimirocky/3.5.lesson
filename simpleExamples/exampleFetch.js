@@ -1,3 +1,10 @@
+/**
+ * ДОМАШНЕЕ ЗАДАНИЕ
+ *  1. Перепишите данные методы
+ *  Вместо цепочки then используйте async\await
+ */
+
+
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
 function getWithFetch() {
@@ -32,5 +39,5 @@ function postWithFetch() { // сохранение нового поста
         .then((json) => console.log(json));
 }
 
-getWithFetch();
-postWithFetch();
+//getWithFetch();
+//postWithFetch();

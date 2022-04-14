@@ -1,3 +1,11 @@
+/**
+ * ДОМАШНЕЕ ЗАДАНИЕ
+ *  1. Перепишите данные методы
+ *  Используя xhr.status
+ *  Выводите в консоль текст код-статуса ответа
+ */
+
+
 const postsURL = 'https://jsonplaceholder.typicode.com/posts';
 
 function getWithXhr() {

@@ -1,7 +1,10 @@
-function getWithXhr() {
-    let xhr = new XMLHttpRequest(); // создание инстанса обьекта
+const postsURL = 'https://jsonplaceholder.typicode.com/posts';
 
-    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts') // инициализация с параметрами
+function getWithXhr() {
+    // создание инстанса объекта
+    let xhr = new XMLHttpRequest();
+    // инициализация соединения с параметрами
+    xhr.open('GET', postsURL)
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
         console.log(JSON.parse(xhr.response));
@@ -13,7 +16,7 @@ function getWithXhr() {
 function postWithXhr() {
     let xhr = new XMLHttpRequest();
 
-    xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts')
+    xhr.open('POST', postsURL)
     xhr.send(JSON.stringify({ // тело запроса(данные)
         title: 'test post 53x',
         body: 'lorem',
@@ -23,3 +26,6 @@ function postWithXhr() {
         console.log(JSON.parse(xhr.response));
     }
 }
+
+//getWithXhr();
+//postWithXhr();

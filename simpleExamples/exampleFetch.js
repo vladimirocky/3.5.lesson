@@ -1,18 +1,23 @@
+const URL = 'https://jsonplaceholder.typicode.com/posts';
+
 function getWithFetch() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch(URL)
         .then((response) => response.json())
-        .then((json) => { // promise chaining, как вы можете переписать такую вложеность через async await?
+        .then((json) => {
+            /**
+            * как вы можете переписать promise chaining
+             * через async await?
+            */
             console.log(json); // получили массив из 100 постов
-            fetch(`https://jsonplaceholder.typicode.com/posts/${json[45].id}`) // сделали запрос чтобы получить подробные данные поста №45
+            // сделали запрос чтобы получить подробные данные поста №45
+            fetch(`${URL}/${json[45].id}`)
                 .then((response) => response.json())
                 .then((data) => console.log(data))
         });
 }
 
-
-
 function postWithFetch() { // сохранение нового поста
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch(URL, {
         method: 'POST',
         body: JSON.stringify({
             title: 'test post 53x',
@@ -26,3 +31,6 @@ function postWithFetch() { // сохранение нового поста
         .then((response) => response.json())
         .then((json) => console.log(json));
 }
+
+getWithFetch();
+postWithFetch();

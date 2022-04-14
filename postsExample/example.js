@@ -1,3 +1,13 @@
+/**
+ * Домашнее задание
+ * 1. Изучите пример (для наглядности в браузере установите задержку на несколько секунд)
+ * 2. Добавть возможность в ручную устанавливать количество постов (число может задавать пользователь на странице)
+ * 3. Вместе с постами запрашивать пользователей по их идентификаторам () используя
+ * @param usersURL
+ * 4. Вместе с постами выводите имя из поля username и город из поля city
+ */
+
+const usersURL = 'https://jsonplaceholder.typicode.com/users'
 const button = document.querySelector('.action-button')
 const radio = document.querySelector('.radio-buttons')
 

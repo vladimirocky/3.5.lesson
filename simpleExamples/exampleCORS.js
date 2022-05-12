@@ -1,7 +1,7 @@
-const postsURL = 'https://jsonplaceholder.typicode.com/posts';
+const postsssURL = 'https://jsonplaceholder.typicode.com/posts';
 
 function getWithFetchCORS() {
-    fetch(postsURL,{
+    fetch(postsssURL,{
         //CORS - имеет несколько вариантов(no-cors, *cors, same-origin)
         mode: 'same-origin',
     })

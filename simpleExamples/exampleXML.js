@@ -15,7 +15,7 @@ function getWithXhr() {
     xhr.open('GET', postsURL)
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
-        console.log(JSON.parse(xhr.response));
+        console.log(JSON.parse(xhr.response), xhr.status);
     }
     xhr.onerror = ()=> { // обработчик при ошибке
     }
@@ -31,9 +31,9 @@ function postWithXhr() {
         userId: 1,
     }))
     xhr.onload = ()=> {
-        console.log(JSON.parse(xhr.response));
+        console.log(JSON.parse(xhr.response), xhr.status);
     }
 }
 
-//getWithXhr();
-//postWithXhr();
+// getWithXhr();
+// postWithXhr();

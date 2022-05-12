@@ -40,26 +40,36 @@ function drawRectangles(){
   }
 }
 
-function appendPosts(posts){
+function appendPosts({posts, users}){
+  console.log(posts,users);
+  // console.log(posts[0].userId);
   showCurrentStep('2 - вставляем данные в html' );
 
   const wraper = document.querySelector('.data-wraper')
   wraper.innerHTML = ''
-  
-  for(let i = 0; i < 10; i++){
+  const n = Number(document.querySelector('.posts-number').value);
+  for(let i = 0; i < n; i++){
     const post = document.createElement('div')
+    const id = posts[i].userId - 1;
     post.className = 'post'
-    post.textContent = posts[i].title
+    post.textContent = `${posts[i].title} -  ${users[id].username} from ${users[id].address.city}`;
     wraper.appendChild(post)
   }
 }
 
-function sendRequest(){
+async function sendRequest(){
   showCurrentStep('1 - отправляем запрос' );
-
-  return fetch('https://jsonplaceholder.typicode.com/posts')
-      .then( response => response.json())
-      .then( data => appendPosts(data) )
+  
+  getData = async (URL) => {
+    response = await fetch(URL);
+    let data = await response.json();
+      return data;
+  }
+  let obj = {
+    posts: await getData('https://jsonplaceholder.typicode.com/posts'),
+    users: await getData(usersURL),
+  }
+  appendPosts(obj);
 }
 
 async function showDifferentFunction(){

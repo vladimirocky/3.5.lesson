@@ -15,6 +15,7 @@ function getWithXhr() {
     xhr.open('GET', postsURL)
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
+        console.log((xhr.status),(xhr.status.text))
         console.log(JSON.parse(xhr.response));
     }
     xhr.onerror = ()=> { // обработчик при ошибке

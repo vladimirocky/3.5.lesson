@@ -7,10 +7,10 @@
 
 const URL = 'https://jsonplaceholder.typicode.com/posts';
 
-function getWithFetch() {
-    fetch(URL)
-        .then((response) => response.json())
-        .then((json) => {
+async function getWithFetch() {
+    let response = await fetch (URL);
+    let json = await response.json(); 
+            
             /**
             * как вы можете переписать promise chaining
              * через async await?
@@ -19,8 +19,7 @@ function getWithFetch() {
             // сделали запрос чтобы получить подробные данные поста №45
             fetch(`${URL}/${json[45].id}`)
                 .then((response) => response.json())
-                .then((data) => console.log(data))
-        });
+                .then((data) => console.log(data));
 }
 
 function postWithFetch() { // сохранение нового поста

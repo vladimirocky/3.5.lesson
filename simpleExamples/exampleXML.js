@@ -16,8 +16,10 @@ function getWithXhr() {
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
         console.log(JSON.parse(xhr.response));
+        console.log(`Загрузка произведенна успешна, №-Статуса:${xhr.status} содержание: ${xhr.statusText}`);
     }
     xhr.onerror = ()=> { // обработчик при ошибке
+        console.log(`Загрузка произведенна неудачна №-статуса:${xhr.status} содержание: ${xhr.statusText}`);
     }
 }
 
@@ -32,8 +34,12 @@ function postWithXhr() {
     }))
     xhr.onload = ()=> {
         console.log(JSON.parse(xhr.response));
+        console.log(`Загрузка произведенна успешна, №-Статуса:${xhr.status} содержание: ${xhr.statusText}`);
+    }
+    xhr.onerror = () =>{
+        console.log(`Загрузка произведенна неудачна №-статуса:${xhr.status} содержание: ${xhr.statusText}`);
     }
 }
 
-//getWithXhr();
-//postWithXhr();
+getWithXhr();
+postWithXhr();

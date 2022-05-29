@@ -32,8 +32,9 @@ function drawRectangles(){
 
   const wraper = document.querySelector('.rectangles-wraper')
   wraper.innerHTML = ''
+  const inp = document.getElementById('postNum').value
   
-  for(let i = 0; i < 5; i++){
+  for(let i = 0; i < inp; i++){
     const rectangle = document.createElement('div')
     rectangle.className = 'rectangle'
     wraper.appendChild(rectangle)
@@ -45,21 +46,39 @@ function appendPosts(posts){
 
   const wraper = document.querySelector('.data-wraper')
   wraper.innerHTML = ''
+  const inp = document.getElementById('postNum').value
   
-  for(let i = 0; i < 10; i++){
+  for(let i = 0; i < inp; i++){
     const post = document.createElement('div')
     post.className = 'post'
     post.textContent = posts[i].title
     wraper.appendChild(post)
   }
 }
+function postWriper(post){
+  showCurrentStep('2 - вставляем данные в html');
+  const wrap = document.querySelector('.post-wraper');
+  wrap.innerHTML = ''
+  const inp = document.getElementById('postNum').value;
+  for(let i = 0;i < inp; i++){
+    const posts = document.createElement('div')
+    posts.className = 'posts'
+    posts.id = post[i].id
+    posts.textContent = post[i].username + post[i].address.city
+    console.log(post);
+    wrap.appendChild(posts);
 
+  }
+}
 function sendRequest(){
   showCurrentStep('1 - отправляем запрос' );
 
-  return fetch('https://jsonplaceholder.typicode.com/posts')
+ fetch('https://jsonplaceholder.typicode.com/posts')
       .then( response => response.json())
       .then( data => appendPosts(data) )
+      fetch(usersURL)
+      .then(respon => respon.json())
+      .then(data1 => postWriper(data1))
 }
 
 async function showDifferentFunction(){

@@ -41,12 +41,13 @@
       flex-direction: column;
       row-gap: 10px;
     }
+    
   </style>
 </head>
 <body>
   <main>
     <div class="wrap">
-      <div class="actions-block">
+      <div class="action-blocks">
         <div class="radio-buttons">
           <label>
             Не блокирует
@@ -56,6 +57,9 @@
             Блокирует
             <input value="2" type="radio" name="type" id="sync">
           </label>
+          <p><b>Введите номер поста (1-10):</b><br>
+            <input type="text" size="10" id="id">
+           </p>
           <div class="status"></div>
         </div>
         <div class="header-button">

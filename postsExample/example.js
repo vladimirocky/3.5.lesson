@@ -59,11 +59,12 @@ function sendRequest(){
 
   return fetch('https://jsonplaceholder.typicode.com/posts')
       .then( response => response.json())
-      .then( data => appendPosts(data) )
+      .then( data => appendPosts(data))
 }
 
 async function showDifferentFunction(){
   const isBlockFunction = document.querySelector('input[name="type"]:checked').value;
+  console.log(isBlockFunction);
 
   // 1 Отправляем запрос -> получаем посты  /// 2 - вставляем данные в html
   isBlockFunction == 1 ? sendRequest() : await sendRequest()

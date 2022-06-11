@@ -4,7 +4,7 @@ const someJSON = `
   "userId": 1,
   "id": 1,
   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit"
+  "body": "quia et suscipitsuscipit recusandae consequuntur expedita et cumreprehenderit"
 }
 `
 
@@ -14,12 +14,13 @@ const someData = {
   age: 22,
   phone: '000-000-0'
 }
-
+console.log(someJSON);
 // приведение объекта к json строке
-JSON.stringify(someData) // '{"name":"Test","age":22,"phone":"000-000-0"}'
-
+const b = JSON.stringify(someData) // '{"name":"Test","age":22,"phone":"000-000-0"}'
+console.log(b);
 // парсинг json-строки
-JSON.parse('{"name":"Test","age":22,"phone":"000-000-0"}')
+const a = JSON.parse(someJSON);
+console.log(a);
 // получаем объект
 // {
 //   name: 'Test', 

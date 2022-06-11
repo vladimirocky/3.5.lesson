@@ -5,8 +5,13 @@
  *  Выводите в консоль текст код-статуса ответа
  */
 
-
 const postsURL = 'https://jsonplaceholder.typicode.com/posts';
+
+function consoleOut(id, text) {
+    for (let i = 0; i < text.length; i++) {
+        console.log("Статус:", id, "Строка: ", text[i].title);
+    }
+}
 
 function getWithXhr() {
     // создание инстанса объекта
@@ -16,9 +21,11 @@ function getWithXhr() {
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
         console.log(JSON.parse(xhr.response));
+        consoleOut(xhr.status, JSON.parse(xhr.response));
     }
     xhr.onerror = ()=> { // обработчик при ошибке
     }
+    
 }
 
 function postWithXhr() {
@@ -35,5 +42,5 @@ function postWithXhr() {
     }
 }
 
-//getWithXhr();
-//postWithXhr();
+getWithXhr();
+postWithXhr();

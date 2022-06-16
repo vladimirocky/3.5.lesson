@@ -28,6 +28,8 @@ function getWithXhr() {
                 consoleOut(xhr.status, JSON.parse(xhr.response), out.value);
                 console.log(`Результат ${out.value}`)
                 document.getElementById("input").innerHTML = `Откройте консоль<br>Результат ${out.value}`
+            } else {
+                document.getElementById("input").innerHTML = `Количество должно быть меньше 101`
             }
         })
     }

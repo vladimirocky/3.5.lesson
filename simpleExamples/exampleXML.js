@@ -6,9 +6,11 @@
  */
 
 const postsURL = 'https://jsonplaceholder.typicode.com/posts';
+let out = document.getElementById("userID");
+let btn = document.getElementById("ButtonValue");
 
-function consoleOut(id, text) {
-    for (let i = 0; i < text.length; i++) {
+function consoleOut(id, text, number) {
+    for (let i = 0; i < number; i++) {
         console.log("Статус:", id, "Строка: ", text[i].title);
     }
 }
@@ -21,7 +23,13 @@ function getWithXhr() {
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
         console.log(JSON.parse(xhr.response));
-        consoleOut(xhr.status, JSON.parse(xhr.response));
+        btn.addEventListener('click', () => {
+            if (out.value < 101) { 
+                consoleOut(xhr.status, JSON.parse(xhr.response), out.value);
+                console.log(`Результат ${out.value}`)
+                document.getElementById("input").innerHTML = `Откройте консоль<br>Результат ${out.value}`
+            }
+        })
     }
     xhr.onerror = ()=> { // обработчик при ошибке
     }

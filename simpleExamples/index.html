@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Только CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- Пакет JavaScript с Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .container {
+        margin-top: 200px;
+        margin-left: 500px;
+        display: flex;
+        flex-direction:column;
+        min-height: 100px;
+    }
+    .btn {
+        margin-left: 40px;
+        margin-top: 50px;
+    }
+
+    #input {
+        margin-top: 25px;
+        font-size: 25px;
+        height: 100%;
+        width: 100%;
+        margin-left: 100px;
+    }
+
+    form {
+      margin-top: 25px;
+        margin-left: 125px;
+    }
+</style>
 </head>
 <body>
+  <div class = "container" id = "container">
+    <h1>Задать количество постов</h1>
+        <form>
+            <input type="text" id = "userID"><br>
+            <button id = "ButtonValue" type="button" class= "btn btn-primary">Отправить</button>
+        </form>
+    <div id = "input"></div>
+</div>  
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- <script src="exampleXML.js" ></script> -->
   <!-- <script src="exampleFetch.js" ></script> -->

@@ -12,6 +12,7 @@ let btn = document.getElementById("ButtonValue");
 function consoleOut(id, text, number) {
     for (let i = 0; i < number; i++) {
         console.log("Статус:", id, "Строка: ", text[i].title);
+        document.getElementById("input").innerHTML += `"Статус:", ${id}, "Строка: ", ${text[i].title}<br>`;
     }
 }
 
@@ -23,15 +24,18 @@ function getWithXhr() {
     xhr.send() // отправка запроса
     xhr.onload = ()=> { // обработчик при загрузке
         console.log(JSON.parse(xhr.response));
+
         btn.addEventListener('click', () => {
+            document.getElementById("input").innerHTML = "";
             if (out.value < 101) { 
                 consoleOut(xhr.status, JSON.parse(xhr.response), out.value);
                 console.log(`Результат ${out.value}`)
-                document.getElementById("input").innerHTML = `Откройте консоль<br>Результат ${out.value}`
+                document.getElementById("counter").innerHTML = `Откройте консоль<br>Результат ${out.value}`
             } else {
-                document.getElementById("input").innerHTML = `Количество должно быть меньше 101`
+                document.getElementById("counter").innerHTML = `Количество должно быть меньше 101`;
             }
         })
+
     }
     xhr.onerror = ()=> { // обработчик при ошибке
     }

@@ -6,20 +6,15 @@
  * @param usersURL
  * 4. Вместе с постами выводите имя из поля username и город из поля city
  */
-/*
-Не смог запустить код для проверки, ошибка следующая:
-const button = document.querySelector('.action-button')
-^
 
-ReferenceError: document is not defined
-
-vscode ничего не выделяет, сам найти также не могу
-*/
 
 const usersURL = 'https://jsonplaceholder.typicode.com/users'
 const button = document.querySelector('.action-button')
 const radio = document.querySelector('.radio-buttons')
-const id = document.getElementsById('id')
+const id = document.getElementById('numPost')
+
+console.log(id)
+
 
 // вспомогательный обработчик очистки предидущих запросов
 radio.addEventListener('click',()=>{
@@ -28,8 +23,6 @@ radio.addEventListener('click',()=>{
   const data = document.querySelector('.data-wraper')
   data.innerHTML = ''
   const status = document.querySelector('.status')
-  status.innerHTML = ''
-  const id = document.getElementById('id')
   status.innerHTML = ''
 })
 
@@ -58,20 +51,23 @@ function appendPosts(posts){
   const wraper = document.querySelector('.data-wraper')
   wraper.innerHTML = ''
   
-  
   for(let i = 0; i < 10; i++){
     const post = document.createElement('div')
     post.className = 'post'
     post.textContent = posts[i].title
     wraper.appendChild(post)
+    console.log(post)
   }
-
+}
   function parseId(){
-    let json = JSON.parse(usersURL);
-    let person = json.find(id => json.id === searchTerm).id;
+    const id = document.getElementById('numPost').value
+    const json = JSON.parse(usersURL);
+    const person = json.find(item => item.id === id);
     posts.city = person.city;
     posts.username = person.username;
-  }
+    wraper.appendChild(posts)
+    posts.innerHTML = `<span style = "color: red">Имя:${posts.username}</span><br><span style = "color: green">Город:${posts.city}</span>`
+  
 }
 
 function sendRequest(){
@@ -79,7 +75,8 @@ function sendRequest(){
 
   return fetch('https://jsonplaceholder.typicode.com/users')
       .then( response => response.json())
-      .then( data => appendPosts(data) )
+      .then( data => appendPosts(data))
+  
 }
 
 async function showDifferentFunction(){
@@ -90,7 +87,7 @@ async function showDifferentFunction(){
 
   // 3 Отрисовываем прямоугольники
   drawRectangles()
-
+  
 }
 
 button.addEventListener('click', showDifferentFunction)

@@ -62,18 +62,19 @@ function appendPosts(post){
 function sendRequest(){
   showCurrentStep('1 - отправляем запрос' );
   const id = document.querySelector('.numPost')
+
   console.log(id)
   
   fetch (usersURL,{
     method: 'post',
-    body: id
+    body: JSON.stringify(id)
   })
       .then (response => response.json())
       .then (data => appendPosts(data))
   
   fetch('https://jsonplaceholder.typicode.com/posts',{
     method: 'post',
-    body: id
+    body: JSON.stringify(id)
   })
       .then (response => response.json())
       .then (data => appendPosts(data))

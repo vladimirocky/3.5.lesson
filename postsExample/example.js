@@ -11,9 +11,6 @@
 const usersURL = 'https://jsonplaceholder.typicode.com/users'
 const button = document.querySelector('.action-button')
 const radio = document.querySelector('.radio-buttons')
-const id = document.getElementById('numPost')
-
-console.log(id)
 
 
 // вспомогательный обработчик очистки предидущих запросов
@@ -45,37 +42,41 @@ function drawRectangles(){
   }
 }
 
-function appendPosts(posts){
+function appendPosts(post){
   showCurrentStep('2 - вставляем данные в html' );
 
   const wraper = document.querySelector('.data-wraper')
   wraper.innerHTML = ''
+  const id = document.getElementById('numPost').value
   
-  for(let i = 0; i < 10; i++){
+  for(let i = 0; i < id; i++){
     const post = document.createElement('div')
     post.className = 'post'
-    post.textContent = posts[i].title
+    post.id = base[i+1].id 
+    post.textContent = base[i+1].username + base[i+1].address.city
     wraper.appendChild(post)
     console.log(post)
   }
 }
-  function parseId(){
-    const id = document.getElementById('numPost').value
-    const json = JSON.parse(usersURL);
-    const person = json.find(item => item.id === id);
-    posts.city = person.city;
-    posts.username = person.username;
-    wraper.appendChild(posts)
-    posts.innerHTML = `<span style = "color: red">Имя:${posts.username}</span><br><span style = "color: green">Город:${posts.city}</span>`
-  
-}
 
 function sendRequest(){
   showCurrentStep('1 - отправляем запрос' );
-
-  return fetch('https://jsonplaceholder.typicode.com/users')
-      .then( response => response.json())
-      .then( data => appendPosts(data))
+  const id = document.querySelector('.numPost')
+  console.log(id)
+  
+  fetch (usersURL,{
+    method: 'post',
+    body: id
+  })
+      .then (response => response.json())
+      .then (data => appendPosts(data))
+  
+  fetch('https://jsonplaceholder.typicode.com/posts',{
+    method: 'post',
+    body: id
+  })
+      .then (response => response.json())
+      .then (data => appendPosts(data))
   
 }
 
